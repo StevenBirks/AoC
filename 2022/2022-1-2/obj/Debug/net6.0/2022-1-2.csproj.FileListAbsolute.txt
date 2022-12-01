@@ -1,0 +1,15 @@
+C:\Projects\AoC\2022\2022-1-2\bin\Debug\net6.0\2022-1-2.exe
+C:\Projects\AoC\2022\2022-1-2\bin\Debug\net6.0\2022-1-2.deps.json
+C:\Projects\AoC\2022\2022-1-2\bin\Debug\net6.0\2022-1-2.runtimeconfig.json
+C:\Projects\AoC\2022\2022-1-2\bin\Debug\net6.0\2022-1-2.dll
+C:\Projects\AoC\2022\2022-1-2\bin\Debug\net6.0\2022-1-2.pdb
+C:\Projects\AoC\2022\2022-1-2\obj\Debug\net6.0\2022-1-2.csproj.AssemblyReference.cache
+C:\Projects\AoC\2022\2022-1-2\obj\Debug\net6.0\2022-1-2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\AoC\2022\2022-1-2\obj\Debug\net6.0\2022-1-2.AssemblyInfoInputs.cache
+C:\Projects\AoC\2022\2022-1-2\obj\Debug\net6.0\2022-1-2.AssemblyInfo.cs
+C:\Projects\AoC\2022\2022-1-2\obj\Debug\net6.0\2022-1-2.csproj.CoreCompileInputs.cache
+C:\Projects\AoC\2022\2022-1-2\obj\Debug\net6.0\2022-1-2.dll
+C:\Projects\AoC\2022\2022-1-2\obj\Debug\net6.0\refint\2022-1-2.dll
+C:\Projects\AoC\2022\2022-1-2\obj\Debug\net6.0\2022-1-2.pdb
+C:\Projects\AoC\2022\2022-1-2\obj\Debug\net6.0\2022-1-2.genruntimeconfig.cache
+C:\Projects\AoC\2022\2022-1-2\obj\Debug\net6.0\ref\2022-1-2.dll
