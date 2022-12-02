@@ -13,18 +13,50 @@
             Console.WriteLine($"Result: {result}");
         }
 
-        private static int Calculate(List<Pwordandrule> parsedInput) {
-            var result = 0;
-
-            foreach (var item in parsedInput) {
-                var count = item.Pword
-                    .Where((o,i) => o == item.Character && (i == (item.Min-1) || i == (item.Max-1)))
-                    .Count();
-
-                if (count == 1) {
-                    result++;
+        private static int Calculate(List<Game> parsedInput) {
+            foreach (var round in parsedInput) {
+                if (round.ShouldWin == WL.Lose) {
+                    if (round.Elf == Rps.Rock) {
+                        round.Me = Rps.Scissors;
+                    } else if (round.Elf == Rps.Paper) {
+                        round.Me = Rps.Rock;
+                    } else {
+                        round.Me = Rps.Paper;
+                    }
+                } else if (round.ShouldWin == WL.Draw) {
+                    round.Me = round.Elf;
+                } else {
+                    if (round.Elf == Rps.Rock) {
+                        round.Me = Rps.Paper;
+                    } else if (round.Elf == Rps.Paper) {
+                        round.Me = Rps.Scissors;
+                    } else {
+                        round.Me = Rps.Rock;
+                    }
                 }
+
+                if (round.Me == round.Elf)
+                {
+                    round.Score += 3;
+                } else if (round.Me == Rps.Rock && round.Elf == Rps.Scissors ||
+                           round.Me == Rps.Paper && round.Elf == Rps.Rock ||
+                           round.Me == Rps.Scissors && round.Elf == Rps.Paper)
+                {
+                    round.Score += 6;
+                } else {
+                    round.Score += 0;
+                }
+
+                if (round.Me == Rps.Rock) {
+                    round.Score += 1;
+                } else if (round.Me == Rps.Paper) {
+                    round.Score += 2;
+                } else if (round.Me == Rps.Scissors) {
+                    round.Score += 3;
+                };
             }
+            
+            var result = parsedInput.Select(o => o.Score).Sum();
 
             return result;
         }
@@ -33,16 +65,27 @@
             return System.IO.File.ReadAllText(@"./input.txt");
         }
 
-        private static List<Pwordandrule> ParseInput(string input) {
-            var parsedInput = new List<Pwordandrule>();
+        private static List<Game> ParseInput(string input) {
+            var parsedInput = new List<Game>();
 
             foreach (var i in input.Split("\r\n")) {
-                var newVal = new Pwordandrule();
+                var newVal = new Game();
 
-                newVal.Min = int.Parse(i.Split(" ")[0].Split("-")[0]);
-                newVal.Max = int.Parse(i.Split(" ")[0].Split("-")[1]);
-                newVal.Character = char.Parse(i.Split(" ")[1].Remove(1));
-                newVal.Pword = i.Split(" ")[2];
+                var first = i.Split(" ")[0];
+                var second = i.Split(" ")[1];
+
+                newVal.Elf = first == "A" 
+                    ? Rps.Rock
+                    : first == "B"
+                        ? Rps.Paper
+                        : Rps.Scissors;
+
+                newVal.ShouldWin = second == "X" 
+                    ? WL.Lose
+                    : second == "Y"
+                        ? WL.Draw
+                        : WL.Win;
+
                 parsedInput.Add(newVal);
             }
 
@@ -50,10 +93,22 @@
         }
     }
 
-    class Pwordandrule {
-        public int Min { get; set; }
-        public int Max { get; set; }
-        public char Character { get; set; }
-        public string Pword { get; set; } = string.Empty;
+    class Game {
+        public Rps Me {get; set;}
+        public WL ShouldWin { get; set;}
+        public Rps Elf { get; set;}
+        public int Score { get; set;} = 0;
+    }
+
+    enum Rps {
+        Rock,
+        Paper,
+        Scissors
+    }
+
+    enum WL {
+        Lose,
+        Draw,
+        Win
     }
 }
