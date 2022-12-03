@@ -15,13 +15,11 @@
 
         private static int Calculate(List<Game> parsedInput) {
             foreach (var round in parsedInput) {
-                if (round.Me == round.Elf) // draw
-                {
+                if (round.Me == round.Elf) {
                     round.Score += 3;
                 } else if (round.Me == Rps.Rock && round.Elf == Rps.Scissors ||
                            round.Me == Rps.Paper && round.Elf == Rps.Rock ||
-                           round.Me == Rps.Scissors && round.Elf == Rps.Paper)
-                {
+                           round.Me == Rps.Scissors && round.Elf == Rps.Paper) {
                     round.Score += 6;
                 } else {
                     round.Score += 0;
@@ -34,8 +32,6 @@
                 } else if (round.Me == Rps.Scissors) {
                     round.Score += 3;
                 };
-
-            Console.WriteLine(round.Score);
             }
             
             var result = parsedInput.Select(o => o.Score).Sum();
@@ -55,7 +51,6 @@
 
                 var first = i.Split(" ")[0];
                 var second = i.Split(" ")[1];
-
 
                 newVal.Elf = first == "A" 
                     ? Rps.Rock

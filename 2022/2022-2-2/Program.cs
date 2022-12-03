@@ -35,13 +35,11 @@
                     }
                 }
 
-                if (round.Me == round.Elf)
-                {
+                if (round.Me == round.Elf) {
                     round.Score += 3;
                 } else if (round.Me == Rps.Rock && round.Elf == Rps.Scissors ||
                            round.Me == Rps.Paper && round.Elf == Rps.Rock ||
-                           round.Me == Rps.Scissors && round.Elf == Rps.Paper)
-                {
+                           round.Me == Rps.Scissors && round.Elf == Rps.Paper) {
                     round.Score += 6;
                 } else {
                     round.Score += 0;
